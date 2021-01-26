@@ -1,0 +1,19 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+    id 'idea'
+    id 'groovy'
+}
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+bootJar {
+    mainClassName = 'scrib.hyde.data.SpringDataMain'
+    baseName = 'app-data-layer'
+    version = '0.0.1'
+}
