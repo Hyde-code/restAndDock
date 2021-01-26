@@ -1,3 +1,4 @@
 rootProject.name = 'restAnddock'
 include 'rest-engine'
 include 'app-data-layer'
+include 'app-models'

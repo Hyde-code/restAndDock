@@ -26,12 +26,9 @@ allprojects {
     apply plugin: 'groovy'
     apply plugin: 'idea'
     apply plugin: 'java-library'
-    apply plugin: 'io.spring.dependency-management'
 
     dependencies {
         implementation("org.projectlombok:lombok:${lombokVersion}")
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-
     }
 }
 

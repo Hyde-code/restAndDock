@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+
+jar {
+    manifest {
+        attributes "Main-Class": "scrib.hyde.models.TempMain"
+    }
+}
