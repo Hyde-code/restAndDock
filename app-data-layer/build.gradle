@@ -17,3 +17,9 @@ bootJar {
     baseName = 'app-data-layer'
     version = '0.0.1'
 }
+
+dependencies {
+    implementation project(':app-models')
+    implementation rootProject.readers
+    implementation rootProject.springboot
+}

@@ -1,7 +1,12 @@
 package scrib.hyde.data;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import scrib.hyde.data.spring.DataSpring;
+
 public class SpringDataMain {
     public static void main(String[] args) {
-        System.out.println("Welcome");
+        SpringApplication.run(DataSpring.class, args);
     }
 }

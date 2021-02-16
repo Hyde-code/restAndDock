@@ -7,13 +7,35 @@ plugins {
 }
 
 project.ext {
-    lombokVersion = "1.16.18"
+    lombokVersion = "1.18.16"
     jodaVersion = "2.9.2"
+    openCSVVersion = "5.2"
+    springBootVersion = "2.4.0"
+    slf4jVersion = "1.6.3"
+    log4jVersion = "2.7"
 }
 
 project.ext.joda = ["joda-time:joda-time:${jodaVersion}"]
 project.ext.lombok = ["org.projectlombok:lombok:${lombokVersion}"]
+project.ext.readers = ["com.opencsv:opencsv:${openCSVVersion}"]
+project.ext.springboot = [
+        "org.springframework.boot:spring-boot-starter"
+]
 
+project.ext.loggers = [
+        "org.apache.logging.log4j:log4j-core:${log4jVersion}",
+        "org.apache.logging.log4j:log4j-api:${log4jVersion}",
+        "com.lmax:disruptor:3.4.1"
+]
+
+project.ext.parserz = [
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.1",
+        "com.fasterxml.jackson.core:jackson-core:2.12.1",
+        "com.fasterxml.jackson.core:jackson-databind:2.12.1"
+]
+
+//"org.slf4j:slf4j-log4j12:${slf4jVersion}",
+//"org.slf4j:slf4j-api:${slf4jVersion}",
 
 repositories {
     mavenCentral()
@@ -29,6 +51,26 @@ allprojects {
 
     dependencies {
         implementation("org.projectlombok:lombok:${lombokVersion}")
+        annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+        implementation loggers
+        implementation parserz
     }
+}
+
+configurations {
+    all {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+        exclude group: 'ch.qos.logback', module: 'logback-core'
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+    }
+    // Spring boot bug, self-includes both log4J and logback and fails
+    //all*.exclude group: 'org.springframework', module: 'spring-asm'
+    //all*.exclude group: 'org.powermock', module: 'powermock-module-junit3'
+    //all*.exclude group: 'org.hibernate', module: 'hibernate-validator'
+    //all*.exclude group: 'io.dropwizard.metrics', module: 'metrics-core'
 }
 
