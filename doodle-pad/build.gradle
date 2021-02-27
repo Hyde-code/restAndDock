@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'groovy'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+
+dependencies {
+
+}

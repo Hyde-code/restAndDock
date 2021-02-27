@@ -7,12 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RamenModel {
+public class RamenModelLayer {
     String review;
     String brand;
     String variety;
     String style;
     String country;
-    Double stars;
+    String stars;
+    Double starsDoubleVal;
     String topTen;
 }

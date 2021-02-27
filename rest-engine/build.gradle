@@ -12,9 +12,7 @@ repositories {
     mavenLocal()
 }
 
-
-bootJar {
-    mainClassName = 'scrib.hyde.SpringMain'
-    baseName = 'rest-engine'
-    version = '0.0.1'
+dependencies {
+    implementation project(':app-data-layer')
+    implementation rootProject.springboot
 }

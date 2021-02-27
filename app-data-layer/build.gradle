@@ -12,11 +12,7 @@ repositories {
     mavenLocal()
 }
 
-bootJar {
-    mainClassName = 'scrib.hyde.data.SpringDataMain'
-    baseName = 'app-data-layer'
-    version = '0.0.1'
-}
+jar.enabled = true
 
 dependencies {
     implementation project(':app-models')
