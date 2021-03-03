@@ -14,5 +14,7 @@ repositories {
 
 dependencies {
     implementation project(':app-data-layer')
+    implementation project(':app-models')
     implementation rootProject.springboot
+    implementation rootProject.parserz
 }

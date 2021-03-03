@@ -5,10 +5,13 @@ import com.opencsv.exceptions.CsvException;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.MethodInvocationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import scrib.hyde.data.spring.YamlConfigs;
 import scrib.hyde.models.pojo.RamenModelLayer;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.io.File;
 
 import java.io.FileNotFoundException;
@@ -26,11 +29,13 @@ public class RamenCSVResourceBuilder {
     @Getter
     private List<RamenModelLayer> ramensList;
 
+    @Autowired
+    private YamlConfigs configs;
+
     private void loadRamensFromClassPath() {
         var classLoader = getClass().getClassLoader();
         //var csvFile = new File(classLoader.getResource(CLASS_PATH_CSV_FILE_PATH).getFile());
-        var csvFile = new File("/Users/SG0220142/codebase/home/scribble/java/restAnddock/app-data-layer/src/main/resources/data/ramen-ratings.csv");
-
+        var csvFile = new File(configs.getCsvFilePath());
         ramensList = new ArrayList<>();
 
         try {
@@ -40,7 +45,6 @@ public class RamenCSVResourceBuilder {
                     .build()
                     .parse();
 
-            log.info("*********************" + ramensList.size());
         } catch (FileNotFoundException e) {
             log.error("Could not load ramen data from CSV in class path");
             e.printStackTrace();

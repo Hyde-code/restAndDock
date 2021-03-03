@@ -10,12 +10,12 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class RamenCSVResourceInterface {
+public class RamenCSVInterface {
     @Resource
-    RamenCSVResourceBuilder ramenCSVResource;
+    RamenCSVResourceBuilder ramenCSVSource;
 
     public List<RamenModelLayer> getAllRamens() {
-        return ramenCSVResource.getRamensList();
+        return ramenCSVSource.getRamensList();
     }
 
 }
