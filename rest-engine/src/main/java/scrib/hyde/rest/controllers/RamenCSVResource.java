@@ -2,6 +2,7 @@ package scrib.hyde.rest.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import scrib.hyde.data.interfaces.RamenCSVInterface;
 import scrib.hyde.models.pojo.RamenModelLayer;
 import scrib.hyde.models.pojo.RamenSearch;
@@ -23,6 +24,7 @@ public class RamenCSVResource {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public RamensEnvelope getRamens() {
         try {
+            log.info("Inside the all function !!");
             return RamensEnvelope.builder().data(ramenCSVInterface.getAllRamens())._errorMessage(null).status("OK").build();
         } catch (Exception e) {
             return RamensEnvelope.builder().data(null)._errorMessage(e.getMessage()).status("FAIL").build();
@@ -39,7 +41,7 @@ public class RamenCSVResource {
 
      */
     @RequestMapping(value = "/all", method = RequestMethod.GET, headers = "api-version=2")
-    public RamensEnvelope getRamensByVersion() {
+    public RamensEnvelope getAllRamens() {
         try {
             return RamensEnvelope.builder().data(ramenCSVInterface.getAllRamens())._errorMessage(null).status("OK_VERSIONED").build();
         } catch (Exception e) {
@@ -71,9 +73,8 @@ public class RamenCSVResource {
     GET WITH REQUEST BODY
      */
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String searchRamens(@RequestBody RamenSearch searchForm) {
+    public String searchRamens(@RequestBody RamenSearch searchForm, WebRequest webRequest) {
+        log.info("-----I am being hit-------");
         return searchForm.getBrand();
     }
-
-
 }

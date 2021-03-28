@@ -13,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.List;
 
 @Configuration
-@EnableWebMvc
 public class JsonConfiguration implements WebMvcConfigurer {
 
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {

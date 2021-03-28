@@ -10,7 +10,6 @@ project.ext {
     lombokVersion = "1.18.16"
     jodaVersion = "2.9.2"
     openCSVVersion = "5.2"
-    springBootVersion = "2.4.0"
     slf4jVersion = "1.6.3"
     log4jVersion = "2.7"
 }
@@ -21,6 +20,11 @@ project.ext.readers = ["com.opencsv:opencsv:${openCSVVersion}"]
 project.ext.springboot = [
         "org.springframework.boot:spring-boot-starter",
         'org.springframework.boot:spring-boot-starter-web'
+]
+
+project.ext.springsecurity = [
+        "org.springframework.security:spring-security-config",
+        "org.springframework.security:spring-security-web"
 ]
 
 project.ext.loggers = [
