@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+message ramen{
+  string ramenName = 1;
+
+  double inrRate = 2;
+  repeated RamenComments comments = 3;
+
+}
+
+message RamenComments{
+  string commentFrom  = 1;
+  string comment = 2;
+  google.protobuf.Timestamp commentTime = 3;
+}

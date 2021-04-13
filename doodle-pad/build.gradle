@@ -1,4 +1,6 @@
 plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
     id 'java'
     id 'idea'
     id 'groovy'
@@ -11,5 +13,10 @@ repositories {
 
 
 dependencies {
+    implementation project(':app-models')
+    implementation rootProject.protobuf
+    implementation rootProject.springsecurity
+    implementation rootProject.springboot
+    implementation rootProject.parserz
 
 }
